@@ -37,10 +37,12 @@ public class MainActivity extends Activity {
 				@Override
 				public boolean onLongClick(View v) {
 					// データ準備
-					TextView tv = (TextView)v;
+					MyTextView tv = (MyTextView)v;
 					ClipData data = ClipData.newPlainText("test", "drag:" + tv.getText().toString());
 					// ドラッグ開始
 					v.startDrag(data, new DragShadowBuilder(v), v, 0);
+					// ドラッグ中を示す印として、青色ボーダーに変更する
+					tv.setBorderColor(0xFF0000FF);
 					return true;
 				}
 			});
@@ -48,8 +50,8 @@ public class MainActivity extends Activity {
 			mTextViews[i].setOnDragListener(new OnDragListener() {
 				@Override
 				public boolean onDrag(View v, DragEvent event) {
-					TextView from = (TextView)event.getLocalState();
-					TextView to = (TextView)v;
+					MyTextView from = (MyTextView)event.getLocalState();
+					MyTextView to = (MyTextView)v;
 					String pos = String.format("%s -> %s [%.2f, %.2f] ",
 						from.getText().toString(), to.getText().toString(), event.getX(), event.getY());
 					switch(event.getAction()){
@@ -59,9 +61,13 @@ public class MainActivity extends Activity {
 							return false;
 						}
 						Log.d("test", pos + "drag started.");
+						// ドロップを受け付ける印として、黄色ボーダーに変更する
+						to.setBorderColor(0xFFFFFF00);
 						return true;
 					case DragEvent.ACTION_DRAG_ENDED:
 						Log.d("test", pos + "drag ended.");
+						// ボーダー色を元に戻す
+						to.setBorderColor(0xFF000000);
 						return true;
 					case DragEvent.ACTION_DRAG_LOCATION:
 						// Log.d("test", pos + "drag location."); // 量が多いのでログは出さない
@@ -78,9 +84,13 @@ public class MainActivity extends Activity {
 						return true;
 					case DragEvent.ACTION_DRAG_ENTERED:
 						Log.d("test", pos + "drag entered.");
+						// ドロップ領域に侵入した印として、赤色ボーダーに変更する
+						to.setBorderColor(0xFFFF0000);
 						return true;
 					case DragEvent.ACTION_DRAG_EXITED:
 						Log.d("test", pos + "drag exited.");
+						// ボーダー色を元に戻す
+						to.setBorderColor(0xFFFFFF00);
 						return true;
 					}
 					// TODO Auto-generated method stub

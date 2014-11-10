@@ -1,5 +1,6 @@
 package com.example.mydraggable;
 
+import android.R.integer;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Paint;
@@ -14,7 +15,8 @@ public class MyTextView extends TextView {
 	private void _init(){
 		// 描画準備
 		mPaint = new Paint();
-		mPaint.setColor(0xFFDD0000); // 赤
+		// mPaint.setColor(0xFFDD0000); // 赤
+		mPaint.setColor(0xFF000000); // 黒
 		mPaint.setStrokeWidth(5);
 		mPaint.setAntiAlias(true);
 		mPaint.setStyle(Style.STROKE);
@@ -43,7 +45,9 @@ public class MyTextView extends TextView {
         canvas.drawRect(0, 0, w, h, mPaint);
 	}
 	
-	
-	
+	public void setBorderColor(int color){
+		mPaint.setColor(color);
+		this.invalidate();
+	}
 
 }
