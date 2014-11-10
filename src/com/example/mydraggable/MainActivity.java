@@ -40,7 +40,7 @@ public class MainActivity extends Activity {
 					MyTextView tv = (MyTextView)v;
 					ClipData data = ClipData.newPlainText("test", "drag:" + tv.getText().toString());
 					// ドラッグ開始
-					v.startDrag(data, new DragShadowBuilder(v), v, 0);
+					v.startDrag(data, new MyDragShadowBuilder(v), v, 0);
 					// ドラッグ中を示す印として、青色ボーダーに変更する
 					tv.setBorderColor(0xFF0000FF);
 					return true;
