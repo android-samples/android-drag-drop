@@ -15,6 +15,7 @@ import android.view.View.OnDragListener;
 import android.view.View.OnLongClickListener;
 import android.widget.TextView;
 
+
 public class MainActivity extends Activity {
 	TextView[] mTextViews = new TextView[4];
 

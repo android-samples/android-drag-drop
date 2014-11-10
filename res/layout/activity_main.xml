@@ -10,22 +10,22 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.example.mydraggable.MainActivity" >
 
-    <TextView
+    <com.example.mydraggable.MyTextView
         android:id="@+id/textView1"
         style="@style/MyLabel"
         android:text="A" />
 
-    <TextView
+    <com.example.mydraggable.MyTextView
         android:id="@+id/textView2"
         style="@style/MyLabel"
         android:text="B" />
 
-    <TextView
+    <com.example.mydraggable.MyTextView
         android:id="@+id/textView3"
         style="@style/MyLabel"
         android:text="C" />
 
-    <TextView
+    <com.example.mydraggable.MyTextView
         android:id="@+id/textView4"
         style="@style/MyLabel"
         android:text="D" />
