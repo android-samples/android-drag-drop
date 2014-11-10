@@ -75,6 +75,16 @@ public class MainActivity extends Activity {
 					case DragEvent.ACTION_DROP:
 						// ログ
 						Log.d("test", pos + "drop.");
+						// データも取得
+						ClipData data = event.getClipData();
+						Log.d("test", "---- clip data ----");
+						for(int i = 0; i < data.getItemCount(); i++){
+							ClipData.Item item = data.getItemAt(i);
+							Log.d("test", "  [" + i + "]");
+							Log.d("test", "  " + item.toString());
+							Log.d("test", "  " + item.getText().toString());
+						}
+						
 						// fromをtoの直前に移動する
 						{
 							ViewGroup parent = (ViewGroup)from.getParent();
